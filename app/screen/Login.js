@@ -3,7 +3,7 @@ import {Image,StyleSheet, View, Dimensions } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Badge, Left, Right, Body, Icon, Text, Item, Input,H1,H2,Label,List, ListItem } from 'native-base';
 import { StackNavigator } from 'react-navigation';
 
-export default class MessengerScreen extends Component {
+export default class LoginScreen extends Component {
   static navigationOptions = {
     header : null,
   };
