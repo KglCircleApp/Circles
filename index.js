@@ -1,17 +1,22 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
-import LoginScreen from './app/screen/Login';
-import RegisterScreen from './app/screen/Register';
 import { StackNavigator } from 'react-navigation';
 
+import LoginScreen from './app/screen/Login';
+import RegisterScreen from './app/screen/Register';
 
-export const mApp = StackNavigator({
-    Home : { screen : App },
-    Login : { screen : LoginScreen},
-    Register : { screen : RegisterScreen },
-  },
-  { headerMode: 'screen' }
-  );
+export const App = StackNavigator({
   
+  Login : { 
+    screen : LoginScreen
+  },
+  Register : { 
+    screen : RegisterScreen 
+  },
+},
 
-AppRegistry.registerComponent('Circles', () => mApp);
+{
+initialRouteName: 'Login',
+}
+);
+
+AppRegistry.registerComponent('Circles', () => App);

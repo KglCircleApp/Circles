@@ -1,69 +1,60 @@
 import React, { Component } from 'react';
-import {Image,StyleSheet, View, Dimensions } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Badge, Left, Right, Body, Icon, Text, Item, Input,H1,H2,Label,List, ListItem } from 'native-base';
+import {Image,StyleSheet, View, Dimensions, AppRegistry } from 'react-native';
+import { Container,  Content,Header, Button, Badge, Left, Right, Body, Icon, Text, Item, Input,H1,H2,Label,List} from 'native-base';
 import { StackNavigator } from 'react-navigation';
 
 export default class LoginScreen extends Component {
+
   static navigationOptions = {
     header : null,
   };
+
    render() {
     const { navigate } = this.props.navigation;
      let {height, width} = Dimensions.get('window');
-     var items = ['Category','Province','District','Sector','Cell','Village','Message'];
      return (
        <Container>
-         <Header androidStatusBarColor="#2c3e50" backgroundColor="#000000">
-         <Left>
-            <Button onPress={()=> navigate('Register')} transparent>
-              <Icon name='arrow-back' />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Message</Title>
-          </Body>
-          <Right>
-            <Button transparent>
-              <Icon name='menu' />
-            </Button>
-          </Right>
-         </Header>
-         <Content>
-             <H1 style={{ paddingLeft: 15}}>Enter Your :</H1>
-         <List dataArray={items}
-            renderRow={(item) =>
-              <ListItem>
-                <Text>{item}</Text>
-              </ListItem>
-            }>
-          </List>
-          <Button primary rounded block style={{
-            marginTop: 10,
-            marginLeft: 8,
-            marginRight: 8
-          }}>
-              <Text>Send</Text>
-          </Button>
-         </Content>
-         <Footer>
-          <FooterTab>
-            <Button badge vertical>
-              <Badge><Text>2</Text></Badge>
-              <Icon name="settings" />
-              <Text>Settings</Text>
-            </Button>
-            <Button vertical>
-              <Icon name="done-all" />
-              <Text>Status</Text>
-            </Button>
-            <Button active badge vertical>
-              <Badge ><Text>51</Text></Badge>
-              <Icon active name="filing" />
-              <Text>Archive</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
-         </Container>
+         <Header androidStatusBarColor="#2c3e50" style={{display:'none'}}/>
+        <Content >
+        <View style={styles.container}>
+     
+          <View style={styles.logocontainer}>
+           <Image style={styles.logo} source={require('../image/circles.png')} />
+           
+     </View>
+     </View>
+        </Content>
+      </Container>
      );
    }
  }
+
+ const styles = StyleSheet.create({
+   
+container:{
+ flex:1,
+ textAlign:'center' 
+
+}, 
+
+logo:{
+  width:100,
+  height:100
+   },
+
+logocontainer:{
+  
+  flexGrow:1,
+  justifyContent:'center',
+  
+             },
+subtitle:{
+    color:'#FFF',
+    textAlign:'center',
+    width:160,
+    marginTop:10,
+    opacity:0.6
+        }                                                             
+
+
+});
