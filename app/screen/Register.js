@@ -15,7 +15,7 @@ export default class RegisterScreen extends Component {
          <Header androidStatusBarColor="#2c3e50" style={{display:'none'}}/>
          <Content style={{ backgroundColor: '#f7faff', marginLeft: 8, marginRight: 8 }}>
          <H2 style={{ marginTop: 150, alignSelf:'center', flexDirection:'row'}}>Circle</H2>
-         <Image source={require('./app/image/circles.png')}  
+         <Image source={require('../image/circles.png')}  
             style={[{height: 150, width: 150, alignSelf: 'center', marginBottom: 50 }]} />
          <Item rounded style={{
              marginBottom: 15
