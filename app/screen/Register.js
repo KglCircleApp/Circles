@@ -11,43 +11,28 @@ export default class RegisterScreen extends Component {
     const { navigate } = this.props.navigation;
      let {height, width} = Dimensions.get('window');
      return (
-       <Container><Header androidStatusBarColor="#2c3e50" style={{display:'none'}}/>
-       <Content>
-          <H2 style={{ 
-             color : '#ffffff',
-             flexDirection: 'column',
-             justifyContent: 'center',
-             alignSelf: 'center',
-             bottom: 180
+       <Container>
+         <Header androidStatusBarColor="#2c3e50" style={{display:'none'}}/>
+         <Content style={{ backgroundColor: '#f7faff', marginLeft: 8, marginRight: 8 }}>
+         <H2 style={{ marginTop: 150, alignSelf:'center', flexDirection:'row'}}>Circle</H2>
+         <Image source={require('./app/image/circles.png')}  
+            style={[{height: 150, width: 150, alignSelf: 'center', marginBottom: 50 }]} />
+         <Item rounded style={{
+             marginBottom: 15
             }}>
-          Get there with GERAYO
-           </H2>
-         <Item rounded style={{ 
-           bottom: 150,  
-           paddingLeft : 2,
-           paddingRight: 2,
-          }}>
-         <Icon active name='call' style={{ color: '#ffffff' }} />
-          <Input placeholderTextColor="#ffffff" placeholder="Enter Phone number" style={{ fontSize: 16, color: '#ffffff' }} />
-          </Item>
-          <Button onPress={() => navigate('Verify')} rounded block  info style={{ 
-             paddingLeft : 20,
-             paddingRight: 20,
-             bottom: 100
-            }}>
-             <Text>register</Text>
-          </Button>
-       </Content>
+
+           <Icon active name='call' style={{ color: '#000000' }} />
+            <Input  placeholder="Enter Phone number" style={{ fontSize: 16 }} />
+            </Item>
+            <Button onPress={() => navigate('Verify')} rounded block style={{ 
+               paddingLeft : 20,
+               paddingRight: 20,
+               backgroundColor: '#2c3e50'
+              }}>
+               <Text>register</Text>
+            </Button>
+         </Content>
          </Container>
      );
    }
  }
- 
-let styles = StyleSheet.create({
-   backgroundImage: {
-   flex: 1,
-   backgroundColor:'transparent',
-   justifyContent: 'flex-end',
-   alignItems: 'center',
-  }
- });
