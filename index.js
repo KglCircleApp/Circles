@@ -3,6 +3,8 @@ import { StackNavigator } from 'react-navigation';
 
 import LoginScreen from './app/screen/Login';
 import RegisterScreen from './app/screen/Register';
+import VerifyScreen    from  './app/screen/Verify';
+import HomeScreen      from  './app/screen/Home';
 
 export const App = StackNavigator({
   
@@ -12,6 +14,12 @@ export const App = StackNavigator({
   Register : { 
     screen : RegisterScreen 
   },
+  Verify   : {
+    screen : VerifyScreen
+  },
+  Home : {
+    screen : HomeScreen
+  }
 },
 
 {
