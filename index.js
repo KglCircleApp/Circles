@@ -5,6 +5,7 @@ import LoginScreen from './app/screen/Login';
 import RegisterScreen from './app/screen/Register';
 import VerifyScreen    from  './app/screen/Verify';
 import HomeScreen      from  './app/screen/Home';
+import ProfileScreen    from './app/screen/Profile';
 
 export const App = StackNavigator({
   
@@ -19,6 +20,9 @@ export const App = StackNavigator({
   },
   Home : {
     screen : HomeScreen
+  },
+  Profile : {
+    screen : ProfileScreen
   }
 },
 

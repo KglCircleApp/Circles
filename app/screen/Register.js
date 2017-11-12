@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Image,StyleSheet, View, Dimensions } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Item, Input,H2,Label } from 'native-base';
+import { StyleProvider, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Item, Input,H2,Label } from 'native-base';
 import { StackNavigator } from 'react-navigation';
 
 export default class RegisterScreen extends Component {
