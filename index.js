@@ -3,6 +3,7 @@ import { StackNavigator } from 'react-navigation';
 
 import LoginScreen from './app/screen/Login';
 import RegisterScreen from './app/screen/Register';
+import ProfileSCreen from './app/screen/Profile';
 
 export const App = StackNavigator({
   
@@ -12,10 +13,13 @@ export const App = StackNavigator({
   Register : { 
     screen : RegisterScreen 
   },
+  Profile : {
+    screen : ProfileSCreen
+  },
 },
 
 {
-initialRouteName: 'Login',
+initialRouteName: 'login',
 }
 );
 
