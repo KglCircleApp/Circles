@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Circles</string>
+    <string name="fb_app_id">1742176386089414</string>
+    <string name="ak_client_token">452d862d892c4558bd0c2084e3a0ee87</string>
+    <string name="facebook_app_id">1742176386089414</string>
+    <string name="fb_login_protocol_scheme">fb1742176386089414</string>
+
 </resources>
