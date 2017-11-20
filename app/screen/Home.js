@@ -20,7 +20,7 @@ export default class HomeScreen extends Component {
          <Left>
          </Left>
           <Body>
-            <Title>Feeds</Title>
+            <Title>Home</Title>
           </Body>
           <Right>
             <Button transparent>
@@ -92,9 +92,9 @@ export default class HomeScreen extends Component {
               <Icon name="home" />
               <Text>Home</Text>
             </Button>
-            <Button vertical>
+            <Button onPress={() => navigate('Feeds')} active  vertical>
               <Icon name="document" />
-              <Text>Docs</Text>
+              <Text>Feeds</Text>
             </Button>
             <Button onPress={() => navigate('Profile')} active badge vertical>
               <Badge ><Text>5</Text></Badge>
