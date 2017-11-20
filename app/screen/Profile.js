@@ -50,6 +50,10 @@ return fetch('http://165.227.219.239:3000/api/users/profile/miller', {
       materials: [
           "NodeJS",
           "React-Native"
+      ],
+      projects: [
+        {name:'circles',link:'https://github.com/spencercarli/getting'},
+        { name: 'balls', link: 'https://github.com/spencercarli/getting' }
       ]
     }
     const { navigate } = this.props.navigation;
@@ -61,39 +65,57 @@ return fetch('http://165.227.219.239:3000/api/users/profile/miller', {
           
          
             
-         <View style={{ justifyContent: "center",marginLeft:25,marginTop:5 }}>
+         {/* <View style={{ justifyContent: "center",marginLeft:25,marginTop:5 }}>
               <Thumbnail source={{uri: item.avatar}} style={{height: 300, width: 300, flex: 1,justifyContent:'center'}}/>
-              </View>    
+              </View>     */}
             
+         <Text style={{ alignSelf: 'center'}}>{item.first_name}</Text>
+         <Thumbnail source={{ uri: item.avatar }} style={{ alignSelf: 'center'}}/>
 
-            <Card>
-            <CardItem header>
-              <Text>Description</Text>
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>
-                  {item.description}
-                </Text>
-              </Body>
-            </CardItem>
-           
-         </Card>
+         
 
          <Card>
-            <CardItem header>
-              <Text>Projects</Text>
-            </CardItem>
+          
             <CardItem>
               <Body>
-                <List>
-              <ListItem >
-            <Text>Circle</Text>
-          </ListItem>
-          <ListItem >
-            <Text>Project</Text>
-          </ListItem>
-           </List>
+                 <List>
+                   <ListItem itemDivider >
+                     <Text>name</Text>
+                   </ListItem>
+                 
+                   <ListItem>
+                     <Text>{item.username}</Text>
+                   </ListItem>
+                   <ListItem itemDivider>
+                     <Text>email</Text>
+                   </ListItem>
+                   <ListItem>
+                     <Text>{item.email}</Text>
+                   </ListItem>
+
+                   <ListItem itemDivider>
+                     <Text>numbers</Text>
+                   </ListItem>
+                   <ListItem>
+                     <Text>{item.numbers}</Text>
+                   </ListItem>
+
+                   <ListItem itemDivider>
+                     <Text>description</Text>
+                   </ListItem>
+                   <ListItem>
+                     <Text>{item.description}</Text>
+                   </ListItem>
+
+                   <ListItem itemDivider>
+                     <Text>email</Text>
+                   </ListItem>
+                   <ListItem>
+                     <Text>{item.email}</Text>
+                   </ListItem>
+
+                  
+                 </List>
               </Body>
             </CardItem>
            
