@@ -16,8 +16,6 @@ export default class RegisterScreen extends Component {
      return (
         <Container>
          
-       
-           
          <Segment style={{ backgroundColor: '#ffffff' }}>
            <Button first style={{ backgroundColor: '#2c3e50' }} rounded block>
                <Text>Your circle</Text>

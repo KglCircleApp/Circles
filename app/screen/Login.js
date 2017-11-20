@@ -24,7 +24,7 @@ export default class LoginScreen extends Component {
     header : null,
   };
   
-  handleFacebookLogin () {
+  handleFacebookLogin (navigate) {
     LoginManager.logInWithReadPermissions(['public_profile', 'email', 'user_friends']).then(
       function (result) {
         if (result.isCancelled) {
@@ -33,8 +33,8 @@ export default class LoginScreen extends Component {
           console.log('Login success with permissions: ' + result.grantedPermissions.toString())
           AccessToken.getCurrentAccessToken().then(
             (data) => {
-               alert(data.accessToken.toString())
-               //this.props.navigation.navigate('Home')
+               alert(data.accessToken.toString());
+               navigate('Home');
             }
           )
         }
@@ -57,7 +57,7 @@ export default class LoginScreen extends Component {
         <Image source={require('../image/circles.png')}  
            style={[{height: 150, width: 150, alignSelf: 'center', marginBottom: 50 }]} />   
 
-           <Button iconLeft onPress={this.handleFacebookLogin} rounded block style={{ 
+           <Button iconLeft onPress={this.handleFacebookLogin(navigate)} rounded block style={{ 
                marginTop:50,
                paddingLeft : 20,
                paddingRight: 20,
