@@ -87,16 +87,17 @@ export default class HomeScreen extends Component {
          </Content>
          <Footer>
           <FooterTab>
-            <Button badge vertical>
+               <Button badge vertical active >
               <Badge><Text>2</Text></Badge>
-              <Icon name="home" />
+              <Icon name="home" 
+                   color='#00aced'/>
               <Text>Home</Text>
             </Button>
-            <Button onPress={() => navigate('Feeds')} active  vertical>
-              <Icon name="document" />
-              <Text>Feeds</Text>
+            <Button onPress={() => navigate('Circle')}  vertical>
+              <Icon name="people" />
+              <Text>Circle</Text>
             </Button>
-            <Button onPress={() => navigate('Profile')} active badge vertical>
+            <Button onPress={() => navigate('Profile')}  badge vertical>
               <Badge ><Text>5</Text></Badge>
               <Icon active name="person" />
               <Text>Profile</Text>
