@@ -34,7 +34,7 @@ export default class LoginScreen extends Component {
           AccessToken.getCurrentAccessToken().then(
             (data) => {
                alert(data.accessToken.toString());
-               navigate('Home');
+                navigate('Home');
             }
           )
         }

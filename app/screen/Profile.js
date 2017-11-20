@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import {Image,StyleSheet, View, Dimensions } from 'react-native';
 import { Container, Header, Title, CardItem,Card,Content, Footer, List,ListItem,Thumbnail,FooterTab, Button, Left, Right, Body, Icon, Text, Item, Input,H2,Label } from 'native-base';
 import { StackNavigator } from 'react-navigation';
+const FBSDK = require('react-native-fbsdk');
+const {
+  AccessToken
+} = FBSDK;
 
 export default class ProfileScreen extends Component {
+
   static navigationOptions = ({ navigation, screenProps }) => ({
     title:  'Profile',
     headerLeft: <Icon name={'arrow-back'}
@@ -13,40 +18,38 @@ export default class ProfileScreen extends Component {
   constructor(props){
     super(props);
     this.state = {
-        //data: [],
+        data: {},
         loading:false,
        
         }
+    this.getProfileInfo();
 } 
 
-
-
-  getData(){
-    
-return fetch('http://165.227.219.239:3000/api/users/profile/miller', {
-           method: 'GET',
-      })
-        .then((response) => response.json())
-        .then((responseJson) => {
-         this.setState({data: responseJson});
-         console.log(this.state.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-        
-     }
+getProfileInfo(){
+  return AccessToken.getCurrentAccessToken().then(
+    (data) => {
+       let token = data.accessToken.toString();
+       fetch('https://graph.facebook.com/v2.5/me?fields=email,name,friends,picture,about&access_token=' + token)
+       .then((response) => response.json())
+       .then((json) => {
+         // Some user object has been set up somewhere, build that user here
+        //  alert(JSON.stringify(json));
+         this.setState({data: json});  
+       })
+       .catch(() => {
+         reject('ERROR GETTING DATA FROM FACEBOOK')
+       })
+    }
+  )
+}
 
    render() {
     const item ={
-      first_name: 'nsanzumuhire',
-      last_name: 'daniel',
-      email: 'nsanzudanny@gmail.com',
-      username: 'danny kush',
-      avatar: "http://165.227.219.239:3000/uploads/profiles/doc.png",
-      description: "am a  full stack developper and i work with react-native,reactJS,GraphQL ",
-      numbers: "078456568",
-      access_code: "circle-07845",
+      email: this.state.data.email,
+      username: this.state.data.name,
+      avatar: this.state.data.picture?this.state.data.picture.data.url :"http://165.227.219.239:3000/uploads/profiles/doc.png",
+      description: "About me",
+      id: this.state.data.id,
       materials: [
           "NodeJS",
           "React-Native"
@@ -63,19 +66,10 @@ return fetch('http://165.227.219.239:3000/api/users/profile/miller', {
          <Header androidStatusBarColor="#2c3e50" style={{display:'none'}}/>
          <Content >
           
-         
-            
-         {/* <View style={{ justifyContent: "center",marginLeft:25,marginTop:5 }}>
-              <Thumbnail source={{uri: item.avatar}} style={{height: 300, width: 300, flex: 1,justifyContent:'center'}}/>
-              </View>     */}
-            
          <Text style={{ alignSelf: 'center'}}>{item.first_name}</Text>
          <Thumbnail source={{ uri: item.avatar }} style={{ alignSelf: 'center'}}/>
 
-         
-
          <Card>
-          
             <CardItem>
               <Body>
                  <List>
@@ -94,34 +88,17 @@ return fetch('http://165.227.219.239:3000/api/users/profile/miller', {
                    </ListItem>
 
                    <ListItem itemDivider>
-                     <Text>numbers</Text>
-                   </ListItem>
-                   <ListItem>
-                     <Text>{item.numbers}</Text>
-                   </ListItem>
-
-                   <ListItem itemDivider>
                      <Text>description</Text>
                    </ListItem>
                    <ListItem>
                      <Text>{item.description}</Text>
                    </ListItem>
-
-                   <ListItem itemDivider>
-                     <Text>email</Text>
-                   </ListItem>
-                   <ListItem>
-                     <Text>{item.email}</Text>
-                   </ListItem>
-
                   
                  </List>
               </Body>
             </CardItem>
            
          </Card>
-
-         
                    
          </Content>
          </Container>
