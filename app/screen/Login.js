@@ -30,10 +30,10 @@ export default class LoginScreen extends Component {
         if (result.isCancelled) {
           console.log('Login cancelled')
         } else {
-          console.log('Login success with permissions: ' + result.grantedPermissions.toString())
+          // console.log('Login success with permissions: ' + result.grantedPermissions.toString())
           AccessToken.getCurrentAccessToken().then(
             (data) => {
-               alert(data.accessToken.toString());
+              //  alert(data.accessToken.toString());
                 navigate('Home');
             }
           )

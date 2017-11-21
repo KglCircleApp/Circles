@@ -7,6 +7,7 @@ import VerifyScreen from './app/screen/Verify';
 import HomeScreen from './app/screen/Home';
 import ProfileScreen from './app/screen/Profile';
 import CircleScreen from './app/screen/Circle';
+import PostScreen from './app/screen/Post';
 
 export const App = StackNavigator({
 
@@ -28,7 +29,9 @@ export const App = StackNavigator({
         Circle: {
             screen: CircleScreen
         },
-
+        Post: {
+            screen: PostScreen
+        },
     },
 
     {

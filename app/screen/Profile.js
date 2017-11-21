@@ -12,7 +12,7 @@ export default class ProfileScreen extends Component {
   static navigationOptions = ({ navigation, screenProps }) => ({
     title:  'Profile',
     headerLeft: <Icon name={'arrow-back'}
-                            onPress={ () => { navigation.goBack() }} />,
+    onPress={ () => { navigation.goBack() }} />,
     
   });
   constructor(props){

@@ -10,6 +10,36 @@ export default class HomeScreen extends Component {
   static navigationOptions = {
     header : null,
   };
+
+  constructor(props){
+     super(props);
+    this.state = {
+      loading:false,
+      success:false,
+      data: []
+      }
+  }
+  componentWillMount(){
+    this.getData();
+
+  }
+  getData(){
+     
+        return fetch('http://165.227.219.239:3000/api/posts', {
+          method: 'GET'
+     })
+       .then((response) => response.json())
+       .then((responseJson) => {
+        this.setState({data: responseJson});
+        // alert(responseJson)
+        
+       })
+       .catch((error) => {
+        this.setState({success: true});
+       });
+    
+  }
+
    render() {
     const { navigate } = this.props.navigation;
      let {height, width} = Dimensions.get('window');
@@ -29,60 +59,44 @@ export default class HomeScreen extends Component {
           </Right>
          </Header>
          <Content>
-         <Card style={{flex: 0}}>
+
+         {this.state.data.map((item, index)=>{
+                                  return (
+         <Card style={{flex: 0}} key={index}>
+        
             <CardItem>
               <Left>
                 <Thumbnail source={{uri: 'http://165.227.219.239:3000/uploads/profiles/doc.png'}} />
                 <Body>
-                  <Text>Mucyo fred</Text>
-                  <Text note>Nov 12, 2017</Text>
+                  <Text>{item.posted_by}</Text>
+                  <Text note>{item.created_at}</Text>
                 </Body>
               </Left>
             </CardItem>
+               
             <CardItem>
               <Body>
-                <Image source={ require('../image/reactnative.png')}  style={{height: 200, width: 400, flex: 1}}/>
+                <Image source={{ uri: item.featured }}  style={{height: 200, width: 400, flex: 1}}/>
                 <Text>
-                  React native is greate tool, It's really helps programmer get things done quckliy
+                  {item.body}
                 </Text>
               </Body>
             </CardItem>
             <CardItem>
               <Left>
                 <Button transparent textStyle={{color: '#87838B'}}>
-                  <Icon name="logo-github" />
-                  <Text>1,926 stars</Text>
+                  <Icon name="logo-github"/>
+                  <Text>{item.upvotes}</Text>
                 </Button>
               </Left>
             </CardItem>
+            
           </Card>
-          <Card style={{flex: 0}}>
-            <CardItem>
-              <Left>
-                <Thumbnail source={{uri: 'http://165.227.219.239:3000/uploads/profiles/kush.png'}} />
-                <Body>
-                  <Text>Danny</Text>
-                  <Text note>Nov 12, 2017</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Image source={ require('../image/graph.png')}  style={{height: 250, width: 400, flex: 1}} resizeMode='contain' />
-                <Text>
-                  Get started with GraphQl 
-                </Text>
-              </Body>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Button transparent textStyle={{color: '#87838B'}}>
-                  <Icon name="logo-github" />
-                  <Text>1,926 stars</Text>
-                </Button>
-              </Left>
-            </CardItem>
-          </Card>
+          )
+        })
+    }
+          
+          
          
          </Content>
          <Footer>
